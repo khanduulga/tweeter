@@ -1,0 +1,33 @@
+.new-tweet {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  flex-direction: column;
+}
+.new-tweet-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.new-tweet-submit {
+  padding-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-family: 'Bungee', cursive;
+}
+
+.tweet-button {
+  color: #FFFFFF;
+  background-color: #4056A1
+}
+
+#tweet-text {
+  align-items: center;
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-width: thick;
+  background-color: #f4f1ec;
+}
