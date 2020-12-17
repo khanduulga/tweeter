@@ -5,5 +5,6 @@
  */
 
 $(document).ready(function(event) {
-
+  const article = $("#all-tweets article");
+  console.log(article);
 });

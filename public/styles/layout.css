@@ -63,5 +63,17 @@ body {
   justify-content: space-between;
   padding-left: 10px;
   padding-right: 10px;
-  
+
+}
+
+#all-tweets article:hover {
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+#all-tweets article .handle {
+  opacity: 0.2;
+}
+
+#all-tweets article .handle:hover {
+  opacity: .5;
 }
