@@ -1,7 +1,6 @@
 //javascipt for counter under the Compose message box
 
 $(document).ready(function() {
-  console.log("HI!")
   const textbox = $("#tweet-text");
   textbox.on("keyup", function(event) {
     const charLength = $(this).val().length;

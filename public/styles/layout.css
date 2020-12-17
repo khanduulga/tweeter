@@ -32,3 +32,36 @@ body {
   flex-direction: column;
   align-items: center;
 }
+
+#all-tweets {
+  width: 100%;
+  
+}
+
+#all-tweets article {
+  border-style: solid;
+  margin-bottom: 25px;
+}
+
+#all-tweets header {
+  margin-left: 3%;
+  margin-right: 3%;
+  display: flex;
+  justify-content: space-between
+}
+
+#all-tweets p {
+  margin-left: 3%;
+  margin-right: 3%;
+}
+
+#all-tweets footer {
+  margin-left: 15px;
+  margin-right: 15px;
+  border-top: solid;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 10px;
+  padding-right: 10px;
+  
+}
