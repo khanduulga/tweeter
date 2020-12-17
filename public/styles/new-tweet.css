@@ -31,3 +31,7 @@
   border-bottom-width: thick;
   background-color: #f4f1ec;
 }
+
+.red-counter {
+  color: #FF0000;
+}
