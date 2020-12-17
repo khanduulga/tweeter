@@ -4,7 +4,3 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-$(document).ready(function(event) {
-  const article = $("#all-tweets article");
-  console.log(article);
-});

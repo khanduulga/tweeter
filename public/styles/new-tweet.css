@@ -1,9 +1,5 @@
 .new-tweet {
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: stretch;
-  flex-direction: column;
   padding-bottom: 50px;
 }
 .new-tweet-box {
