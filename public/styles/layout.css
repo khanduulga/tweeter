@@ -40,6 +40,20 @@ body {
   margin-bottom: 25px;
 }
 
+#all-tweets article:hover {
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  opacity: 1;
+}
+
+#all-tweets article .handle {
+  opacity: 0.2;
+}
+
+/*google: how to change inner elements on hover */
+#all-tweets article:hover .handle {
+  opacity: .5;
+}
+
 #all-tweets header {
   margin-left: 3%;
   margin-right: 3%;
@@ -60,17 +74,5 @@ body {
   justify-content: space-between;
   padding-left: 10px;
   padding-right: 10px;
-
 }
 
-#all-tweets article:hover {
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
-}
-
-#all-tweets article .handle {
-  opacity: 0.2;
-}
-
-#all-tweets article .handle:hover {
-  opacity: .5;
-}

@@ -15,9 +15,10 @@
   font-family: 'Bungee', cursive;
 }
 
-.tweet-button {
+.new-tweet-submit button {
   color: #FFFFFF;
   background-color: #4056A1
+  
 }
 
 #tweet-text {

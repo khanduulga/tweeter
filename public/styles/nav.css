@@ -7,20 +7,28 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
 }
 
-#logo {
+nav span {
   font-family: 'Bungee', cursive;
     /* display: flex; */
 }
 
-#new-tweet {
+
+nav div {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-#red-arrow {
+nav div span {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+nav div img {
   height: 20px;
   width: 20px;
 }
