@@ -1,6 +1,6 @@
 # Tweeter Project
 
-Tweeter is a simple, single-page cousing of Twitter.
+Tweeter is a simple, single-page cousin of Twitter.
 
 Tweet, Tweet, Tweet
 
