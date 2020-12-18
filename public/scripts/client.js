@@ -2,15 +2,15 @@
  * Client-side JS logic goes here
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
- */ 
+ */
 
 //helper for converting dates to strings
- //TAKEN FROM STACKOVERFLOW BY Masih Jahangiri
+//TAKEN FROM STACKOVERFLOW BY Masih Jahangiri
 function timeSince(date) {
 
-  var seconds = Math.floor((new Date() - date) / 1000);
+  let seconds = Math.floor((new Date() - date) / 1000);
 
-  var interval = seconds / 31536000;
+  let interval = seconds / 31536000;
 
   if (interval > 1) {
     return Math.floor(interval) + " years";
@@ -53,9 +53,9 @@ function createTweetElement(tweet) {
       <div>F R L</div>
     </footer>  
   </article>  
-  `;  
+  `;
   return $tweet;
-}  
+}
 
 //helper function for createTweetElement to help escape and secure text inputs
 function escape(str) {
@@ -65,10 +65,10 @@ function escape(str) {
 }
 
 function renderTweets(tweets) {
-  for(const tweet of tweets) {
+  for (const tweet of tweets) {
     $("#all-tweets").prepend(createTweetElement(tweet));
-  }  
-}  
+  }
+}
 
 //helper function for submitTweet, clears the section element that holds tweets
 function clearTweets() {
@@ -87,18 +87,18 @@ function submitTweet(event) {
 
     //send to new tweet
     $.ajax("/tweets", {method: "POST", data: tweet})
-    .then((res) => {
-      clearTweets();
-      loadTweets();
-      $(".new-tweet #tweet-text").val("");
-      $(".new-tweet output").val(140);
-    })
+      .then(() => {
+        clearTweets();
+        loadTweets();
+        $(".new-tweet #tweet-text").val("");
+        $(".new-tweet output").val(140);
+      });
   } else if (tweetLength > 140) {
     //For being too long
     $(".new-tweet #error").text("Too Long! A tweet needs to be 140 characters in total!");
     $(".new-tweet #error").slideDown("slow", () => {
       $(".new-tweet #error").css("display", "flex");
-    });    
+    });
   } else {
     //For being empty
     $(".new-tweet #error").text("Empty?! A tweet needs to be atleast 1 characters long!");
@@ -109,17 +109,17 @@ function submitTweet(event) {
   }
 }
 
-//get request for /tweets 
+//get request for /tweets
 //receives an array of tweets as JSON
 function loadTweets() {
   $.ajax("/tweets", {method: "GET"})
-  .then((res) => {
-    renderTweets(res);
-  });
+    .then((res) => {
+      renderTweets(res);
+    });
 }
 
 //Main func calls after DOM is ready
 $(document).ready(function() {
-  $(".new-tweet-box").submit(submitTweet); 
+  $(".new-tweet-box").submit(submitTweet);
   loadTweets();
-})
+});
