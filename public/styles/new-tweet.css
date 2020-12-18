@@ -1,13 +1,11 @@
-.new-tweet {
+.new-tweet .new-tweet-box {
   width: 100%;
-  padding-bottom: 50px;
-}
-.new-tweet-box {
+  padding-bottom: .8em;
   display: flex;
   flex-direction: column;
 }
 
-.new-tweet-submit {
+.new-tweet .new-tweet-submit {
   padding-top: 10px;
   display: flex;
   flex-direction: row;
@@ -15,7 +13,7 @@
   font-family: 'Bungee', cursive;
 }
 
-.new-tweet-submit button {
+.new-tweet .new-tweet-submit button {
   color: #FFFFFF;
   background-color: #4056A1
   
@@ -32,4 +30,13 @@
 
 .red-counter {
   color: #FF0000;
+}
+
+.new-tweet #error {
+  display:none;
+  background: salmon;
+  color: red;
+  margin: 1em;
+  margin-top: 0em;
+  padding: .5em;
 }

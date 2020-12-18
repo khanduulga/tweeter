@@ -4,83 +4,85 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */ 
 
-
-// Test / driver code (temporary). Eventually will get this from the server.
-const data = [
-  {
-    "user": {
-      "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png"
-      ,
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1461116232227
-  },
-  {
-    "user": {
-      "name": "Descartes",
-      "avatars": "https://i.imgur.com/nlhLi3I.png",
-      "handle": "@rd" },
-    "content": {
-      "text": "Je pense , donc je suis"
-    },
-    "created_at": 1461113959088
-  }
-]
-
-
+//creates and returns a string using given tweet object
 function createTweetElement(tweet) {
   const $tweet = `
-    <article class="tweet">
-      <header>
-        <h3>${tweet.user.name}</h3>
-        <h3 class="handle">${tweet.user.handle}</h3>
-      </header>  
-      <p>${tweet.content.text}</p>
-      <footer>
-        <div>${tweet.created_at}</div>
-        <div>Share and Subscribe</div>
-      </footer>  
-    </article>  
+  <article class="tweet">
+  <header>
+  <h3>${escape(tweet.user.name)}</h3>
+  <h3 class="handle">${escape(tweet.user.handle)}</h3>
+  </header>  
+  <p>${escape(tweet.content.text)}</p>
+  <footer>
+  <div>${escape(tweet.created_at)}</div>
+  <div>Share and Subscribe</div>
+  </footer>  
+  </article>  
   `;  
   return $tweet;
 }  
 
+//helper function for createTweetElement to help escape and secure text inputs
+function escape(str) {
+  let div = document.createElement('div');
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+}
+
 function renderTweets(tweets) {
   for(const tweet of tweets) {
-    $("#all-tweets").append(createTweetElement(tweet));
+    $("#all-tweets").prepend(createTweetElement(tweet));
   }  
 }  
+
+//helper function for submitTweet, clears the section element that holds tweets
+function clearTweets() {
+  $("#all-tweets").empty();
+}
 
 function submitTweet(event) {
   event.preventDefault();
   const tweet = $(".new-tweet-box").serialize();
   const tweetForLengthCheck = tweet.replaceAll("%20", "+");
-  const tweetLength = tweetForLengthCheck.length - 5; //for "text="
+  const tweetLength = tweetForLengthCheck.length - 5;           //for "text="
+
   //check if tweet is empty or too lengthy
   if (tweetLength < 141 && tweetForLengthCheck.length !== 5) {
+    //animate away error message
+    $(".new-tweet #error").slideUp("slow");
+
+    //send to new tweet
     $.ajax("/tweets", {method: "POST", data: tweet})
     .then((res) => {
+      clearTweets();
       loadTweets();
     })
+  } else if (tweetLength > 140) {
+    //For being too long
+    $(".new-tweet #error").text("Too Long! A tweet needs to be 140 characters in total!");
+    $(".new-tweet #error").slideDown("slow", () => {
+      $(".new-tweet #error").css("display", "flex");
+    });    
   } else {
-    alert("You have not met the messange length requirement!");
+    //For being empty
+    $(".new-tweet #error").text("Empty?! A tweet needs to be atleast 1 characters long!");
+    $(".new-tweet #error").slideDown("slow", () => {
+      $(".new-tweet #error").css("display", "flex");
+    });
+
   }
 }
 
 //get request for /tweets 
 //receives an array of tweets as JSON
 function loadTweets() {
-  // const tweetsFromServer;
   $.ajax("/tweets", {method: "GET"})
   .then((res) => {
     renderTweets(res);
   });
 }
 
+//Main func calls after DOM is ready
 $(document).ready(function() {
   $(".new-tweet-box").submit(submitTweet); 
   loadTweets();

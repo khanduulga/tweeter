@@ -64,6 +64,7 @@ body {
 #all-tweets p {
   margin-left: 3%;
   margin-right: 3%;
+  overflow-wrap: anywhere;
 }
 
 #all-tweets footer {
@@ -76,3 +77,26 @@ body {
   padding-right: 10px;
 }
 
+@media only screen and (min-width: 1024px) {
+  body {
+    max-width: 1024px;
+    display: flex;
+    width: 100%
+  }
+
+  body .top-header {
+    width: 40%;
+    margin: 2em;
+    margin-top: 6em;
+  }
+
+  body .container {
+    width: 45%;
+    margin: 0;
+    margin-top: 6em;
+  }
+
+
+
+
+}
