@@ -6,6 +6,12 @@ Tweet, Tweet, Tweet
 
 Practice project for: HTML, CSS, JS, jQuery and AJAX front-end skills, and Node, Express and MongoDB back-end skills.
 
+## Screenshots
+!["Mobile version"](https://github.com/khanduulga/tweeter/blob/master/docs/tweeter-mobile.png)
+!["Desktop version"](https://github.com/khanduulga/tweeter/blob/master/docs/tweeter-laptop.png)
+
+
+
 ## Getting Started
 
 1. Fork this repository, then clone your fork of this repository.
