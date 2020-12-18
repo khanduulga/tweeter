@@ -61,6 +61,15 @@ body {
   justify-content: space-between
 }
 
+#all-tweets header div {
+  display: flex;
+  align-items: center;
+}
+#all-tweets header div img {
+  height: 2em;
+  margin-right: .5em;
+}
+
 #all-tweets p {
   margin-left: 3%;
   margin-right: 3%;
@@ -79,7 +88,6 @@ body {
 
 @media only screen and (min-width: 1024px) {
   body {
-    max-width: 1024px;
     display: flex;
     width: 100%
   }
