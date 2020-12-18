@@ -58,25 +58,30 @@ function renderTweets(tweets) {
 function submitTweet(event) {
   event.preventDefault();
   const tweet = $(".new-tweet-box").serialize();
-  $.ajax("/tweets", {method: "POST", data: tweet})
+  const tweetForLengthCheck = tweet.replaceAll("%20", "+");
+  const tweetLength = tweetForLengthCheck.length - 5; //for "text="
+  //check if tweet is empty or too lengthy
+  if (tweetLength < 141 && tweetForLengthCheck.length !== 5) {
+    $.ajax("/tweets", {method: "POST", data: tweet})
+    .then((res) => {
+      loadTweets();
+    })
+  } else {
+    alert("You have not met the messange length requirement!");
+  }
+}
+
+//get request for /tweets 
+//receives an array of tweets as JSON
+function loadTweets() {
+  // const tweetsFromServer;
+  $.ajax("/tweets", {method: "GET"})
   .then((res) => {
-    console.log(res);
-  })
+    renderTweets(res);
+  });
 }
 
 $(document).ready(function() {
-  renderTweets(data);
-  $(".new-tweet-box").submit(submitTweet);
-
-  // form.submit(function(event) {
-    // event.preventDefault();
-  //   console.log('THIS', serialForm);
-  //   $.ajax("/tweets", { 
-  //     method: "POST",
-  //     data: serialForm
-  //   })
-  //   .then((res) => {
-  //     console.log(res);
-  //   })
-  // })
+  $(".new-tweet-box").submit(submitTweet); 
+  loadTweets();
 })
